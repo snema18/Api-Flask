@@ -649,3 +649,4 @@ Discover the essentials of containerizing your Python Flask app with Docker. Thi
         docker buildx build --platform linux/arm64 -t <your_docker_hub_username>/api-flask:latest-arm64 --push .
         ```
 
+.
