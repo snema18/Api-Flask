@@ -1,0 +1,28 @@
+# Docker
+# Build a Docker image
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+trigger:
+- main
+
+stages:
+- stage: Build
+  displayName: Build image
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      name: AZING
+    steps:
+    - task: Docker@2
+      displayName: Build an image
+      inputs:
+        command: 'buildAndPush'
+        repository:  surbhin/repo1
+        dockerfile: '**/Dockerfile'
+        containerRegistry: dockerhub
+        
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: '$(Pipeline.Workspace)'
+        publishLocation: 'pipeline'
